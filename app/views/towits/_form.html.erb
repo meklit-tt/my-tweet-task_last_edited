@@ -1,0 +1,19 @@
+
+<%= form_with(model: @towit, local: true) do |form| %>
+  <% if @towit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @towit.errors.count %>There are errors.</h2>
+      <ul>
+      <% @towit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="towit_messages">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+<%= link_to "twit list return to screen", towits_path %>
