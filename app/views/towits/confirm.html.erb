@@ -3,8 +3,7 @@
 <h3>Send with the following Content</​h3>
   <%= form_with(model: @towit, url: towits_path, local: true) do |form| %>
   <%= form.hidden_field :content %>
-  <p> Text:<%=​ @towit.content %></p>
-  <%= form.submit "to register" %>
-  <%= form.submit "Return", name: 'back' %>
+  <p>Body:<%= @towit.content %></p>
+  <%= form.submit  "Submit" %>
 <% end %>
 </body>

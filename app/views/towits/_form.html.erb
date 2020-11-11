@@ -1,10 +1,11 @@
 
-<%= form_with(model: @blog, local: true ,url: choose_new_or_edit ) do |form| %>
+<%= form_with(model: @towit, url: choose_new_or_edit, local: true ) do |form| %>
   <% if @towit.errors.any? %>
     <div id="error_explanation">
       <h3>There are <%= @towit.errors.count %> errors.</h3>
       <ul>
       <% @towit.errors.full_messages.each do |msg| %>
+
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,7 +13,7 @@
   <% end %>
     <div class="towit_messages">
     <%= form.label :content %>
-    <%= form.text_field :content %>
+    <%= form.text_area :content %>
   </div>
   <%= form.submit %>
 <% end %>

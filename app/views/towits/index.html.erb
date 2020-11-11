@@ -12,9 +12,9 @@
         <% @towits.each do |towit| %>
     <tr>
       <td><%= towit.content %></td>
-      <td><%= link_to 'Check new towit', towit_path(towit.id) %></td>
-      <td><%= link_to "Edit towit", edit_towit_path(towit.id), data: { confirm: 'Can I really edit it?' } %></td>
-      <td><%= link_to 'Delete towit', towit_path(towit.id), method: :delete ,data: { confirm: 'Can i really delete it？' } %></td>
+      <td><%= link_to 'Check new towit', towit %></td>
+      <td><%= link_to "Edit towit", edit_towit_path(towit), data: { confirm: 'Can I really edit it?' } %></td>
+      <td><%= link_to 'Delete towit', towit, method: :delete, data: { confirm: 'Can i really delete it？' } %></td>
     </tr>
     <% end %>
     <br>

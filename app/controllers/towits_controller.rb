@@ -9,41 +9,45 @@ class TowitsController < ApplicationController
    end
 
    def create
-    @towit = Towit.new(towit_params)
-     if params[:back]
-     render:new
-     else
-      if @towit.save
-    redirect_to towits_path, notice: "I make twit!"
-     else
-    render:new
+   @towit = Towit.new(towit_params)
+   respond_to do |format|
+    if @towit.save
+      format.html { redirect_to @towit, notice: 'The tweet was created SUCCESSFULLY.' }
+      format.json { render :show, status: :created, location: @towit }
+    else
+     format.html { render :new }
+      format.json { render json: @towit.errors, status: :unprocessable_entity }
+    end
   end
   end
-end
   def show
   end
+
   def edit
   end
+
   def update
       if @towit.update(towit_params)
          redirect_to towits_path, notice: "twit edited!"
       else
          render :edit
+      end
   end
-  end
+
   def destroy
       @towit.destroy
       redirect_to towits_path, notice: "twit deleted!"
   end
+
   def ​confirm(towit_params)
       ​@towit = Towit.new(towit_params)
       render :new if @towit.invalid?
- end
+  end
+end
   private
   def set_towit
       @towit = Towit.find(params[:id])
   end
   def towit_params
-      params.require(:towit).permit(:content)
-  end
+    params.require(:towit).permit(:content)
   end
